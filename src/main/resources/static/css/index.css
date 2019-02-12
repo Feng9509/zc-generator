@@ -1,0 +1,15 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+ul li {
+    list-style: none;
+}
+.index-title {
+    width: 201px;
+    margin: 0 auto;
+    font-size: 18px;
+    font-family: "楷体";
+    font-weight: 900;
+    line-height: 140px;
+}

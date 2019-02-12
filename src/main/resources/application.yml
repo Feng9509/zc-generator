@@ -1,0 +1,9 @@
+spring:
+  mvc:
+    view:
+      # 页面默认前缀目录
+      prefix: /WEB-INF/page/
+      # 响应页面默认后缀
+      suffix: .jsp
+    # 静态资源路径
+    static-path-pattern: /static/**
