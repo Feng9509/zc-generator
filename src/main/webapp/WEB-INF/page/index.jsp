@@ -1,29 +1,38 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
 <head>
-    <title>Hello</title>
+    <title>代码生成器</title>
 
-    <script src="static/js/jQuery-3.3.1.min.js" ></script>
-    <script src="static/js/jQuery-easyui-1.7.0/jquery.easyui.min.js" ></script>
-    <script src="static/js/jQuery-easyui-1.7.0/locale/easyui-lang-zh_CN.js" ></script>
-    <link href="static/js/jQuery-easyui-1.7.0/themes/metro/easyui.css" type="text/css" rel="stylesheet"></link>
+    <%@ include file="/common/css.jsp" %>
     <link href="static/css/index.css" type="text/css" rel="stylesheet"></link>
 </head>
-<body class="easyui-layout">
-    <div data-options="region:'north'" style="height:150px;">
-        <div class="index-title">代码生成器Version1</div>
-    </div>
-    <div data-options="region:'west'" style="width:200px;">
 
+<body class="easyui-layout">
+    <div data-options="region:'north'" style="height:90px; overflow: hidden;">
+        <div class="nav-top"></div>
+    </div>
+    <div data-options="region:'west'" style="width:160px;">
+        <ul class="nav-left">
+            <li>
+                <div>
+                    <span class="onename" data-url="<c:url value=''/>">代码生成</span>
+                </div>
+            </li>
+        </ul>
     </div>
     <div data-options="region:'center'" style="padding:5px;">
-
+        <div id="tabs" class="easyui-tabs" data-options="border: flase; fit: true;"></div>
     </div>
 </body>
 
+<%@ include file="/common/js.jsp" %>
 <script >
     $(function() {
+        $(".onename").each(function(index, data) {
 
+        });
     });
 </script>
 </html>

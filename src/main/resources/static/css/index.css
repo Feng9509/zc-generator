@@ -2,14 +2,28 @@
     margin: 0;
     padding: 0;
 }
-ul li {
+
+ul, li {
     list-style: none;
 }
-.index-title {
-    width: 201px;
-    margin: 0 auto;
-    font-size: 18px;
-    font-family: "楷体";
-    font-weight: 900;
-    line-height: 140px;
+
+.nav-top {
+    background-color: #00b1fd;
+    height: 90px;
+}
+
+.nav-left li {
+    cursor: pointer;
+    line-height: 35px;
+    background-color: #00b1fd;
+    border-bottom: 1px solid #F2F2F2;
+    font-size: 14px;
+}
+
+.nav-left li span {
+    display: block;
+    width: 100%;
+    font-size: 14px;
+    color: #fff;
+    text-align: center;
 }
