@@ -1,4 +1,4 @@
-package com.generator.zcgenerator;
+package com.generator;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.generator.com.zc.dao.TableDao">
+    <resultMap id="resultmap" type="com.generator.com.zc.entity.Table">
+        <result column="TABLE_NAME" property="name"></result>
+        <result column="CREATETIME" property="createtime"></result>
+        <result column="UDPATETIME" property="updatetime"></result>
+        <result column="TABLE_COMMENT" property="comment"></result>
+    </resultMap>
+
+    <select id="select" resultMap="resultmap">
+        SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'person_online_db' ;
+    </select>
+</mapper>

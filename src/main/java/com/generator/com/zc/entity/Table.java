@@ -1,4 +1,4 @@
-package com.generator.zcgenerator.com.zc.entity;
+package com.generator.com.zc.entity;
 
 import java.io.Serializable;
 

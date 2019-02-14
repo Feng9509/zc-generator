@@ -1,6 +1,6 @@
-package com.generator.zcgenerator.utils;
+package com.generator.utils;
 
-import com.generator.zcgenerator.com.zc.entity.Table;
+import com.generator.com.zc.entity.Table;
 
 import java.io.InputStream;
 import java.sql.*;

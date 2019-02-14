@@ -1,4 +1,4 @@
-package com.generator.zcgenerator.com.zc.web.controller;
+package com.generator.com.zc.web.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
