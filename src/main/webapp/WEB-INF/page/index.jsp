@@ -3,10 +3,10 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
 <head>
-    <title>代码生成器</title>
+    <title>XXXXXX</title>
 
     <%@ include file="/common/css.jsp" %>
-    <link href="static/css/index.css" type="text/css" rel="stylesheet"></link>
+    <link href="/static/css/index.css" type="text/css" rel="stylesheet"></link>
 </head>
 
 <body class="easyui-layout">
@@ -15,23 +15,29 @@
     </div>
     <div data-options="region:'west'" style="width:160px;">
         <ul class="nav-left">
-            <li>
+            <li class="menuOne" data-url="<c:url value='/sys/table/list.htm' />">
                 <div>
-                    <span class="onename" data-url="<c:url value=''/>">代码生成</span>
+                    <span>XXXXX</span>
                 </div>
             </li>
         </ul>
     </div>
     <div data-options="region:'center'" style="padding:5px;">
-        <div id="tabs" class="easyui-tabs" data-options="border: flase; fit: true;"></div>
+        <div id="tabs" class="easyui-tabs" data-options="fit: true, border: false"></div>
     </div>
 </body>
 
 <%@ include file="/common/js.jsp" %>
 <script >
-    $(function() {
-        $(".onename").each(function(index, data) {
-
+    $(function () {
+        $(".menuOne").click(function () {
+            var url = $(this).data("url");
+            $("#tabs").tabs("add", {
+                title: "测试",
+                content: "<iframe src="+url+" allowTransparency='true' style='border:0;width:100%;height:100%;display: block;' frameBorder='0'></iframe>",
+                fit: true,
+                border: false,
+            });
         });
     });
 </script>

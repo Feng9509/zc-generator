@@ -6,27 +6,53 @@
     <title></title>
 
     <%@ include file="/common/css.jsp" %>
-    <link href="static/css/index.css" type="text/css" rel="stylesheet"></link>
 </head>
 
+<body class="easyui-layout" data-options="fit:true, border:false">
+    <div id="toolbar">
+        <a href="javascript: void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-ok',plain:true"><span>确认</span></a>
+        <a href="javascript: void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-cancel',plain:true"><span>取消</span></a>
+    </div>
 
-<div data-options="region:'center'" style="padding:5px;">
-    <table id="grid"></table>
-</div>
+    <div data-options="region:'center'" data-options="fit:true, border:false">
+        <table id="grid" data-options="fit: true, border: false"></table>
+    </div>
 </body>
 
 <%@ include file="/common/js.jsp" %>
 <script >
     $(function() {
-        alert(basepath + "sys/table/gettables.json");
+        var editUrl = "<c:url value='/sys/table/edit.htm' />";
+
         $('#grid').datagrid({
-            url: basepath + "sys/table/gettables.json",
+            url: basepath + "/sys/table/listpage.json",
+            pagination: true,
+            selectOnCheck: false,
+            checkOnSelect: false,
+            singleSelect: true,
+            fitColumns: true,
             columns:[[
-                {field:'name',title:'名称',width:100},
-                {field:'createtime',title:'createtime',width:100},
-                {field:'updatetime',title:'updatetime',width:100}
-            ]]
+                {field: 'name',title: '名称',width: 150},
+                {field: 'createtime',title: '建表时间',width: 100},
+                {field: 'updatetime',title: '表更新时间',width: 100},
+                {field: 'comment',title: '备注',width: 200},
+                {field: 'opt',title: '操作',width: 80,
+                    formatter: function (value, row, index) {
+                        return "<div class='edit' style='cursor: pointer;' data-name='"+row.name+"'><span>编辑</span></div>";
+                    }
+                },
+            ]],
         });
+
+        $("body").on("click", ".edit", function () {
+            $("<div/>").dialog({
+                title: "信息填写",
+                width: 600,
+                height: 400,
+                content: "<iframe src="+editUrl+" allowTransparency='true' style='border:0;width:100%;height:100%;display: block;' frameBorder='0'></iframe>",
+                modal: true
+            });
+        })
     });
 </script>
 </html>
