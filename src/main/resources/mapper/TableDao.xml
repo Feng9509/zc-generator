@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.generator.com.zc.dao.TableDao">
-    <resultMap id="resultmap" type="com.generator.com.zc.entity.Table">
+<mapper namespace="com.generator.dao.TableDao">
+    <resultMap id="resultmap" type="com.generator.entity.Table">
         <result column="TABLE_NAME" property="name"></result>
         <result column="CREATE_TIME" property="createtime"></result>
         <result column="UPDATE_TIME" property="updatetime"></result>
@@ -9,6 +9,8 @@
     </resultMap>
 
     <select id="select" resultMap="resultmap">
-        SELECT TABLE_NAME, CREATE_TIME, UPDATE_TIME, TABLE_COMMENT FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'person_online_db'
+        SELECT TABLE_NAME, CREATE_TIME, UPDATE_TIME, TABLE_COMMENT
+        FROM INFORMATION_SCHEMA.TABLES
+        WHERE TABLE_SCHEMA = #{databasename}
     </select>
 </mapper>

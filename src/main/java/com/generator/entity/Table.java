@@ -1,7 +1,12 @@
-package com.generator.com.zc.entity;
+package com.generator.entity;
 
 import java.io.Serializable;
 
+/**
+ * @descrption 前台展示的数据库表数据
+ * @Date 2019/2/22
+ * @Auther zhangchao
+ */
 public class Table implements Serializable {
     private String name;
     private String comment;

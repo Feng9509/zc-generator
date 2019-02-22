@@ -15,7 +15,7 @@
     </div>
     <div data-options="region:'west'" style="width:160px;">
         <ul class="nav-left">
-            <li class="menuOne" data-url="<c:url value='/sys/table/list.htm' />">
+            <li class="menuOne" data-url="<c:url value='/sys/table/list.htm' />" data-title="代码生成">
                 <div>
                     <span>XXXXX</span>
                 </div>
@@ -31,13 +31,18 @@
 <script >
     $(function () {
         $(".menuOne").click(function () {
-            var url = $(this).data("url");
-            $("#tabs").tabs("add", {
-                title: "测试",
-                content: "<iframe src="+url+" allowTransparency='true' style='border:0;width:100%;height:100%;display: block;' frameBorder='0'></iframe>",
-                fit: true,
-                border: false,
-            });
+            var title = $(this).data("title");
+            if ($("#tabs").tabs("exists", title)){
+                $("#tabs").tabs("select", title)
+            } else {
+                var url = $(this).data("url");
+                $("#tabs").tabs("add", {
+                    title: title,
+                    content: "<iframe src="+url+" allowTransparency='true' style='border:0;width:100%;height:100%;display: block;' frameBorder='0'></iframe>",
+                    fit: true,
+                    border: false,
+                });
+            }
         });
     });
 </script>

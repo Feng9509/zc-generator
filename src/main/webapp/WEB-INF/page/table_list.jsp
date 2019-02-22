@@ -9,11 +9,6 @@
 </head>
 
 <body class="easyui-layout" data-options="fit:true, border:false">
-    <div id="toolbar">
-        <a href="javascript: void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-ok',plain:true"><span>确认</span></a>
-        <a href="javascript: void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-cancel',plain:true"><span>取消</span></a>
-    </div>
-
     <div data-options="region:'center'" data-options="fit:true, border:false">
         <table id="grid" data-options="fit: true, border: false"></table>
     </div>
@@ -22,7 +17,7 @@
 <%@ include file="/common/js.jsp" %>
 <script >
     $(function() {
-        var editUrl = "<c:url value='/sys/table/edit.htm' />";
+        var generateUrl = "<c:url value='/sys/table/generate.json' />";
 
         $('#grid').datagrid({
             url: basepath + "/sys/table/listpage.json",
@@ -38,21 +33,27 @@
                 {field: 'comment',title: '备注',width: 200},
                 {field: 'opt',title: '操作',width: 80,
                     formatter: function (value, row, index) {
-                        return "<div class='edit' style='cursor: pointer;' data-name='"+row.name+"'><span>编辑</span></div>";
+                        return "<div class='edit' style='cursor: pointer;' data-name='"+row.name+"' data-comment='"+row.comment+"'><span>编辑</span></div>";
                     }
                 },
             ]],
         });
 
         $("body").on("click", ".edit", function () {
-            $("<div/>").dialog({
-                title: "信息填写",
-                width: 600,
-                height: 400,
-                content: "<iframe src="+editUrl+" allowTransparency='true' style='border:0;width:100%;height:100%;display: block;' frameBorder='0'></iframe>",
-                modal: true
+            var tablename = $(this).data("name");
+            var comment = $(this).data("comment");
+            $.messager.confirm("提示", "是否对此表生成实体类？", function (r) {
+                if (r) {
+                    $.post(generateUrl, {tablename: tablename, comment: comment}, function (result) {
+                        $.messager.show({
+                            title: "提示",
+                            msg: result.msg,
+                            timeout: 1000,
+                        });
+                    });
+                }
             });
-        })
+        });
     });
 </script>
 </html>
